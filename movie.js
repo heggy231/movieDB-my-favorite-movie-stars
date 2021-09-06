@@ -54,6 +54,7 @@ vote_count: 6393
  */
 
 const displayMovieListByMyFavoriteActor = async (actorNameStr) => {
+  document.getElementById("movie").innerHTML = "";
   // Input: Actor name in string
   // Output: list of movies that actor casted in
   const movieList = await findMovieListByMyFavoriteActor(actorNameStr); // returns array of obj [{…}, {…}, {…}, {…}, ...]
