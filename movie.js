@@ -4,6 +4,11 @@ const lookupActorID = async (actorNameStr) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/person?api_key=6a58b3d8272d36ba7d59905a29e8d6ba&query=${actorNameStr}`
   );
+  // error handling
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const dataID = await response.json();
   console.log("actor id ====>", dataID.results[0].id); // 500 for Tom Cruise
   return dataID.results[0].id;
@@ -20,6 +25,10 @@ const findMovieListByMyFavoriteActor = async (actorNameStr) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/person/${myActorID}/movie_credits?api_key=6a58b3d8272d36ba7d59905a29e8d6ba`
   );
+  // error handling
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
   const movieList = await response.json();
   console.log(
     "movie list that my favorite actor casted in =====>",
@@ -54,12 +63,12 @@ vote_count: 6393
  */
 
 const displayMovieListByMyFavoriteActor = async (actorNameStr) => {
-  document.getElementById("movie").innerHTML = "";
   // Input: Actor name in string
   // Output: list of movies that actor casted in
   const movieList = await findMovieListByMyFavoriteActor(actorNameStr); // returns array of obj [{…}, {…}, {…}, {…}, ...]
   // lists out movies
   document.getElementById("movie").innerHTML = `
+    <h2>Your favorite movie star ${actorNameStr.toUpperCase()}'s list of movies he/she/they/ze/name only played in:</h2>
     <ul>
       ${movieList.map((movie) => `<li>${movie.title}</li>`).join("")}
     </ul>
