@@ -21,7 +21,12 @@ const findMovieListByMyFavoriteActor = async (actorNameStr) => {
 
   // url needed to look up movie credits by my favorite actor
   // https://api.themoviedb.org/3/person/500/movie_credits?api_key=6a58b3d8272d36ba7d59905a29e8d6ba
-  const myActorID = await lookupActorID(actorNameStr); // returns actorID
+  const myActorID = await lookupActorID(actorNameStr).catch((error) => {
+    console.log(
+      "There has been a problem with your fetch operation: " + error.message
+    );
+  }); // returns actorID
+
   const response = await fetch(
     `https://api.themoviedb.org/3/person/${myActorID}/movie_credits?api_key=6a58b3d8272d36ba7d59905a29e8d6ba`
   );
@@ -78,20 +83,32 @@ const displayMovieListByMyFavoriteActor = async (actorNameStr) => {
 // get the user's favorite actor info
 const actorNameStr = prompt(
   "Please Enter your favorite actor/actress name: ",
-  "tom cruise"
+  "Tom Cruise"
 );
-displayMovieListByMyFavoriteActor(actorNameStr);
+displayMovieListByMyFavoriteActor(actorNameStr).catch((error) => {
+  console.log(
+    "There has been a problem with your fetch operation: " + error.message
+  );
+});
 
 // function that accepts two actors and return one
 //  of them played in more movies
 const winnerOfMostPlayedAmongstTwoActors = async (actor1, actor2) => {
   let numberOfMoviesActor1PlayedIn = await findMovieListByMyFavoriteActor(
     actor1
-  );
+  ).catch((error) => {
+    console.log(
+      "There has been a problem with your fetch operation: " + error.message
+    );
+  });
 
   let numberOfMoviesActor2PlayedIn = await findMovieListByMyFavoriteActor(
     actor2
-  );
+  ).catch((error) => {
+    console.log(
+      "There has been a problem with your fetch operation: " + error.message
+    );
+  });
 
   if (
     numberOfMoviesActor1PlayedIn.length === numberOfMoviesActor2PlayedIn.length
@@ -119,14 +136,18 @@ I will tell you which one of them played in more movies!
 ****************************************************`);
 const getActor1NameForMovieFight = prompt(
   "Please Enter First actor/actress name: ",
-  "tom cruise"
+  "Tom Cruise"
 );
 const getActor2NameForMovieFight = prompt(
   "Please Enter One More actor/actress name: ",
-  "tom hanks"
+  "Tom Hanks"
 );
 
 winnerOfMostPlayedAmongstTwoActors(
   getActor1NameForMovieFight,
   getActor2NameForMovieFight
-);
+).catch((error) => {
+  console.log(
+    "There has been a problem with your fetch operation: " + error.message
+  );
+});
