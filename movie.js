@@ -97,14 +97,18 @@ const winnerOfMostPlayedAmongstTwoActors = async (actor1, actor2) => {
     numberOfMoviesActor1PlayedIn.length === numberOfMoviesActor2PlayedIn.length
   ) {
     alert(
-      `It's a tie! ${actor1} and ${actor2} played in the same number of movies`
+      `It's a tie! ${actor1.toUpperCase()} and ${actor2.toUpperCase()} played in the same number of movies.`
     );
   } else if (
     numberOfMoviesActor1PlayedIn.length > numberOfMoviesActor2PlayedIn.length
   ) {
-    alert(`${actor1} won! ${actor1} played more movies than ${actor2}!`);
+    alert(
+      `${actor1.toUpperCase()} won! ${actor1} played more movies than ${actor2}!`
+    );
   } else {
-    alert(`${actor2} won! ${actor2} played more movies than ${actor1}!`);
+    alert(
+      `${actor2.toUpperCase()} won! ${actor2} played more movies than ${actor1}!`
+    );
   }
 };
 
