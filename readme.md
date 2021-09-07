@@ -1,4 +1,4 @@
-# IMDB My Favorite Movie Stars:
+# MovieDB's My Favorite Movie Stars:
 
 ![app gif](favoriteMovie.gif)
 
@@ -6,7 +6,7 @@
 
 - [Code](https://github.com/heggy231/imdb-my-favorite-movie-stars)
 
-## How to run the IMDB My Favorite Movie Stars APP:
+## How to run the MovieDB's My Favorite Movie Stars APP:
 
 - First, go to the [Live Demo](https://heggy231.github.io/imdb-my-favorite-movie-stars/) site.
 
