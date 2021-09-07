@@ -2,6 +2,9 @@
 
 ![app gif](favoriteMovie.gif)
 
+- YouTube Walk Thru Video:
+  [![Heggy Walk thru Video of MOVIEDB APP](https://img.youtube.com/vi/lp1X-CURQzQ/0.jpg)](https://www.youtube.com/watch?v=lp1X-CURQzQ)
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lp1X-CURQzQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 - [Demo](https://heggy231.github.io/movieDB-my-favorite-movie-stars/)
