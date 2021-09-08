@@ -18,6 +18,6 @@
 
 - Then, enter two movie stars names to see who played the most movies.
 
-- The user sees who won the movie match then the list of movies that favorite movie start played displayed on the screen.
+- The user sees who won the movie match then the list of movies that favorite movie star played displayed on the prompt screen.
 
 - To re-play the app, click the "Page Refresh" button on your browser.
