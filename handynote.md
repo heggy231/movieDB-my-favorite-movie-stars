@@ -1,4 +1,4 @@
-# important links
+# Important links
 
 - [MovieDB](https://www.themoviedb.org/) api general [overview](https://www.themoviedb.org/documentation/api)
 
@@ -27,3 +27,17 @@
 - `?` starting point of query string
 
 - `api_key=6a58b3d8272d36ba7d59905a29e8d6ba` is key/value pair for my own `api key` required in order for me to request data from TMDB (The Movie DB) server.
+
+## backlog for future releases:
+
+1. Give user a menu to choose:
+   1-1. Display my favorite actor's movie list
+   1-2. Movie fight: Who played in most movies
+
+2. Create unit tests for all functions in `movie.js`:
+   2-1. create unit test for `lookupActorID`
+   2-2. create unit test for `findMovieListByMyFavoriteActor`
+   2-3. create unit test for `displayMovieListByMyFavoriteActor`
+   2-4. create unit test for `winnerOfMostCastedActorAmongstTwoActors`
+
+3.
