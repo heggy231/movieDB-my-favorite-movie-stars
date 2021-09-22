@@ -31,6 +31,7 @@
 ## backlog for future releases:
 
 1. Give user a menu to choose:
+
    1-1. Display my favorite actor's movie list
    1-2. Movie fight: Who played in most movies
 
@@ -40,4 +41,14 @@
    2-3. create unit test for `displayMovieListByMyFavoriteActor`
    2-4. create unit test for `winnerOfMostCastedActorAmongstTwoActors`
 
-3.
+3. Replace `prompts` and `alerts` to a better UI a better visual-designed, more focused flow experience for the user.
+
+4. Improve UI: better more visually appealing way to display this list of movies
+
+5. Improve UI: User error catch: what if a user misspells an actor's name? (Can the UI be improved to prevent that from happening?)
+
+   - UX approach to Make UI (helpful guide on how to better display this data):
+
+     - (UX) Why would a user want to use this list of movies?
+
+     - (UX) Why do they want this information? If you can answer these questions then that can .
