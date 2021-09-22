@@ -10,13 +10,13 @@ const lookupActorID = async (actorNameStr) => {
   }
 
   const dataID = await response.json();
-  console.log("actor id ====>", dataID.results[0].id); // 500 for Tom Cruise
+  console.log("actor id ====>", dataID.results[0].id); // actor id: 500 for Tom Cruise
   return dataID.results[0].id;
 };
 
 const findMovieListByMyFavoriteActor = async (actorNameStr) => {
-  // input: Actor's name in string format
-  // output: List of movies that my favorite actor
+  // Input: Actor's name in string format
+  // Output: List of movies that my favorite actor
   //         casted in array of obj format
 
   // url needed to look up movie credits by my favorite actor
@@ -43,11 +43,14 @@ const findMovieListByMyFavoriteActor = async (actorNameStr) => {
     "number of movies my fav actor played in =====>",
     movieList.cast.length
   );
+
   return movieList.cast;
 };
 
 /**
- * ex look how obj look like from movieList.cast result:
+ * ex of what `movieList.cast` data look like:
+ * 1) data type: array of obj, [{…}, {…}, {…}, {…}, ...]
+ * 2) each obj property:
  * adult: false
 backdrop_path: "/vwCc9PP6xkSjnYsSl9lzTABhexe.jpg"
 character: "Ray Ferrier"
@@ -69,11 +72,12 @@ vote_count: 6393
 
 const displayMovieListByMyFavoriteActor = async (actorNameStr) => {
   // Input: Actor name in string
-  // Output: list of movies that actor casted in
+  // Output: List of movies that my favorite actor was casted in Array of obj format
+
   const movieList = await findMovieListByMyFavoriteActor(actorNameStr); // returns array of obj [{…}, {…}, {…}, {…}, ...]
   // lists out movies
   document.getElementById("movie").innerHTML = `
-    <h2>Your favorite movie star ${actorNameStr.toUpperCase()}'s list of movies he/she/they/ze/name only played in:</h2>
+    <h2>Your favorite movie star ${actorNameStr.toUpperCase()}'s list of movies he/she/they/ze played in: </h2>
     <ul>
       ${movieList.map((movie) => `<li>${movie.title}</li>`).join("")}
     </ul>
@@ -81,6 +85,11 @@ const displayMovieListByMyFavoriteActor = async (actorNameStr) => {
 };
 
 // get the user's favorite actor info
+// get two more actors info from the user for movie fight!
+alert(`***** Welcome to My Favorite Movie Star App! ********
+Enter your favorite actor's name.
+I will tell you list of movies your favorite movie star played in!
+************************************************************`);
 const actorNameStr = prompt(
   "Please Enter your favorite actor/actress name: ",
   "Tom Cruise"
@@ -91,9 +100,9 @@ displayMovieListByMyFavoriteActor(actorNameStr).catch((error) => {
   );
 });
 
-// function that accepts two actors and return one
-//  of them played in more movies
-const winnerOfMostPlayedAmongstTwoActors = async (actor1, actor2) => {
+const winnerOfMostCastedActorAmongstTwoActors = async (actor1, actor2) => {
+  // Input: Two Actors' names in string
+  // Output: Actor's name, one who played in most movies in string
   let numberOfMoviesActor1PlayedIn = await findMovieListByMyFavoriteActor(
     actor1
   ).catch((error) => {
@@ -114,17 +123,33 @@ const winnerOfMostPlayedAmongstTwoActors = async (actor1, actor2) => {
     numberOfMoviesActor1PlayedIn.length === numberOfMoviesActor2PlayedIn.length
   ) {
     alert(
-      `It's a tie! ${actor1.toUpperCase()} and ${actor2.toUpperCase()} played in the same number of movies.`
+      `It's a tie! ${actor1.toUpperCase()} and ${actor2.toUpperCase()} played in the same number of movies (# of movies casted: ${
+        numberOfMoviesActor1PlayedIn.length
+      }).`
     );
   } else if (
     numberOfMoviesActor1PlayedIn.length > numberOfMoviesActor2PlayedIn.length
   ) {
     alert(
-      `${actor1.toUpperCase()} won! ${actor1} played more movies than ${actor2}!`
+      `${actor1.toUpperCase()} won! ${actor1} (# of movies casted: ${
+        numberOfMoviesActor1PlayedIn.length
+      }) played ${
+        numberOfMoviesActor1PlayedIn.length -
+        numberOfMoviesActor2PlayedIn.length
+      } more movies than ${actor2} (# of movies casted: ${
+        numberOfMoviesActor2PlayedIn.length
+      })!`
     );
   } else {
     alert(
-      `${actor2.toUpperCase()} won! ${actor2} played more movies than ${actor1}!`
+      `${actor2.toUpperCase()} won! ${actor2} (# of movies casted: ${
+        numberOfMoviesActor2PlayedIn.length
+      }) played ${
+        numberOfMoviesActor2PlayedIn.length -
+        numberOfMoviesActor1PlayedIn.length
+      } more movies than ${actor1} (# of movies casted: ${
+        numberOfMoviesActor1PlayedIn.length
+      })!`
     );
   }
 };
@@ -143,7 +168,7 @@ const getActor2NameForMovieFight = prompt(
   "Tom Hanks"
 );
 
-winnerOfMostPlayedAmongstTwoActors(
+winnerOfMostCastedActorAmongstTwoActors(
   getActor1NameForMovieFight,
   getActor2NameForMovieFight
 ).catch((error) => {
